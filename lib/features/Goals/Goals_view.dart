@@ -53,7 +53,7 @@ class GoalsView extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 12),
                     elevation: 2,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(12),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: ListTile(
                       contentPadding: EdgeInsets.symmetric(

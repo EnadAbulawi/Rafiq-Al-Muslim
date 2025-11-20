@@ -26,7 +26,7 @@ class ProfileView extends StatelessWidget {
           Card(
             elevation: 4,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(16),
+              borderRadius: BorderRadius.circular(16),
             ),
             child: Padding(
               padding: EdgeInsets.all(24),
@@ -228,9 +228,7 @@ class ProfileView extends StatelessWidget {
                     'رفيق المسلم',
                     style: AppFonts.ibmMedium.copyWith(
                       fontSize: 18,
-                      color: themeController.isDark.value
-                          ? Colors.black
-                          : Colors.white,
+                      color: Colors.blue[900],
                     ),
                   ),
                   SizedBox(height: 4),

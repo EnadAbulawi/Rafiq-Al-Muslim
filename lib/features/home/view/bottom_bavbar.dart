@@ -26,7 +26,7 @@ class _BottomBavbarState extends State<BottomBavbar> {
 
   @override
   Widget build(BuildContext context) {
-    const Color bottomNavColor = Color(0xff17203a);
+    final bottomNavColor = Theme.of(context).colorScheme.primary;
     return Scaffold(
       body: _pages[_currentIndex],
       bottomNavigationBar: SafeArea(
@@ -34,13 +34,13 @@ class _BottomBavbarState extends State<BottomBavbar> {
           padding: const EdgeInsets.all(14),
           margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
           decoration: BoxDecoration(
-            color: bottomNavColor.withOpacity(0.8),
+            color: bottomNavColor.withOpacity(0.95),
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
                 color: bottomNavColor.withOpacity(0.3),
                 blurRadius: 20,
-                offset: const Offset(0, 20),
+                offset: const Offset(0, 10),
               ),
             ],
           ),
@@ -62,22 +62,30 @@ class _BottomBavbarState extends State<BottomBavbar> {
   Widget _buildNavItem(IconData icon, String label, int index) {
     return GestureDetector(
       onTap: () => setState(() => _currentIndex = index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            color: _currentIndex == index ? Colors.white : Colors.grey[400],
-          ),
-          const SizedBox(height: 6),
-          Text(
-            label,
-            style: AppFonts.ibmMedium.copyWith(
-              color: _currentIndex == index ? Colors.white : Colors.grey[400],
-              fontSize: 12,
-            ),
-          ),
-        ],
+      child: Builder(
+        builder: (context) {
+          final activeColor = Theme.of(context).colorScheme.secondary;
+          final inactiveColor = Colors.grey[400];
+
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                color: _currentIndex == index ? activeColor : inactiveColor,
+                size: 24,
+              ),
+              const SizedBox(height: 6),
+              Text(
+                label,
+                style: AppFonts.ibmMedium.copyWith(
+                  color: _currentIndex == index ? activeColor : inactiveColor,
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
